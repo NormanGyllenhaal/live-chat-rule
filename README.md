@@ -4,17 +4,18 @@
 2. url 中体现 版本 将版本放在域名之后 https://api.example.com/v1/
 3. url 路径 每个网址代表一种资源（resource），而且所用的名词与数据库名对应。数据库中的表都是同种记录的"集合"（collection），API中的名词使用复数
 4. HTTP动词
-GET（SELECT）：从服务器取出资源（一项或多项）。
-POST（CREATE）：在服务器新建一个资源。
-PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。
-PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。
-DELETE（DELETE）：从服务器删除资源。
+GET（SELECT）：从服务器取出资源（一项或多项） 
+POST（CREATE）：在服务器新建一个资源 
+PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源） 
+PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性） 
+DELETE（DELETE）：从服务器删除资源 
 5. 过滤信息 
 分页 ?page=2&size=100：指定第几页，以及每页的记录数。
 排序 ?sortBy=name&order=asc：指定返回结果按照哪个属性排序，以及排序顺序。
 过滤 ?animal_type_id=1：指定筛选条件
 6. 请求异常-http状态码  
 200 – OK – 请求成功  
+204 - No Content - 无内容 删除资源成功时返回此错误吗
 400 – Bad Request – 请求参数错误，数据体体现详细错误信息，在客户端提交的参数错误，加密错误时返回此状态码  
 401 – Unauthorized – 未授权，客户端在缺少签名信息时返回此状态码  
 403 – Forbidden – 禁止，客户端在时间戳过期，sign 等签名信息验证失败时 返回此状态码  
@@ -69,11 +70,11 @@ DELETE（DELETE）：从服务器删除资源。
 
 9. 返回结果  
 GET /collection：返回资源对象的列表（数组）  
-GET /collection/resource：返回单个资源对象  
-POST /collection：返回新生成的资源对象  
-PUT /collection/resource：返回完整的资源对象  
-PATCH /collection/resource：返回完整的资源对象  
-DELETE /collection/resource：返回一个空文档  
+GET /collection/resource：返回单个资源对象  http 状态码200
+POST /collection：返回新生成的资源对象   http 状态码200
+PUT /collection/resource：返回完整的资源对象    http 状态码200
+PATCH /collection/resource：返回完整的资源对象   http 状态码200
+DELETE /collection/resource：返回一个空文档  http 状态码204
 对响应数据体服务端统一移除了值为null的属性，客户端无需处理返回值出现null的异常
 
 
